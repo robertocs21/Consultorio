@@ -29,11 +29,7 @@ if ($method === 'GET') {
   $fn = $this->postRoutes[$splitURL[0]] ?? null;
 }
 
-        if ($method === 'GET') {
-            $fn = $this->getRoutes[$currentUrl] ?? null;
-        } else {
-            $fn = $this->postRoutes[$currentUrl] ?? null;
-        }
+       
 
         if ( $fn ) {
             // Call user fn va a llamar una función cuando no sabemos cual sera

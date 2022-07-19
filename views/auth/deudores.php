@@ -40,16 +40,16 @@ input{
         </tr>
     </thead>
     <tbody>
-        
+    <?php foreach($lista as $res):?>
         <tr>
-            <th><font color=black>1</th>
-            <th><font color=black>Roberto</th>
-            <th><font color=black>Castro</th>
+            <th><font color=black><?php echo $res->id?></th>
+            <th><font color=black><?php echo $res->nombre?></th>
+            <th><font color=black><?php echo $res->apellido?></th>
             <th><font color=black><input type="num" id ="pago" name="pago"></th>
             <th><font color=black><input type="num" id ="cobro" name="cobro"></th>
-            <th><font color=black>1000</th>
-
+            <th><font color=black></th>
         </tr>
+        <?php endforeach;  ?>
     </tbody>
 </table>
 <input type="submit" value="Actualizar" class="boton">

@@ -40,8 +40,8 @@ $router->get('/busqueda',[PacienteController::class, 'busqueda']);
 $router->post('/busqueda',[PacienteController::class, 'busqueda']);
 
 //lista de deudores
-$router->get('/deudores',[LoginController::class, 'deudores']);
-$router->post('/deudores',[LoginController::class, 'deudores']);
+$router->get('/deudores',[PacienteController::class, 'deudores']);
+$router->post('/deudores',[PacienteController::class, 'deudores']);
 
 //lista de busqueda
 $router->get('/lista-busqueda',[PacienteController::class, 'lista']);

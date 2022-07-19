@@ -82,12 +82,7 @@ class LoginController{
    
     public static function inicio(Router $router){
         $router->render('auth/inicio',[
-
-        ]);
-    }
-    public static function deudores(Router $router){
-        $router->render('auth/deudores',[
-
+            
         ]);
     }
     public static function mensaje(Router $router){

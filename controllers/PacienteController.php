@@ -68,4 +68,12 @@ class PacienteController{
             'resultado'=>$resultado
         ]);
     }
+    public static function deudores(Router $router){
+        $pacientes = new Pacientes();
+        $lista = $pacientes->all();
+        
+        $router->render('auth/deudores',[
+            'lista'=>$lista
+        ]);
+    }
 }

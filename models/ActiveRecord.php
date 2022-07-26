@@ -187,5 +187,26 @@ class ActiveRecord {
         $resultado = self::$db->query($query);
         return $resultado;
     }
+     // Subida de archivos
+     public function setImagen($imagen) {
+        // Elimina la imagen previa
+        if( !is_null($this->id) ) {
+            $this->borrarImagen();
+        }
+        // Asignar al atributo de imagen el nombre de la imagen
+        if($imagen) {
+            $this->imagen = $imagen;
+        }
+    }
+
+    // Elimina el archivo
+    public function borrarImagen() {
+        // Comprobar si existe el archivo
+        $carpetaImagenes = '../views/auth/imagenes/';
+        $existeArchivo = file_exists($carpetaImagenes . $this->imagen);
+        if($existeArchivo) {
+            unlink($carpetaImagenes . $this->imagen);
+        }
+    }
 
 }

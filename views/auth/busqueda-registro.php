@@ -60,9 +60,6 @@
     margin-left:990px;
 }
 </style>
-<?php 
-
-?>
 
 <div class="contenedor">
     <br>
@@ -324,13 +321,15 @@
             placeholder="Odontograma"
         />
     </div>
+
+    <img src="imagenes/<?php echo $resultado->imagen; ?>">
     <div class="campo w-100">
         <label>Anotaciones:</label>
 
         <textarea id="anotaciones" name ="anotaciones"><?php echo s($resultado->anotaciones); ?></textarea>
         
      </div>
-     <p>Yo <?php echo ($resultado->nombre); ?> <?php echo s($resultado->apellido); ?>, después de haber sido informado(a) de mi estado de salud bucal y de conocer las posibles consecuencias de mi tratamiento, autorizo al cirujano dentista para que lleve a cabo los tratamientos odontológicos, médicos y quirúrgicos que sean necesarios para resolver mis padecimientos odontólogicos. Así mismo doy fe en que he sido informado (a) de manera clara cada uno de los conceptos aquí expuestos.</p>
+     <p>Yo <?php echo s($resultado->nombre); ?> <?php echo s($resultado->apellido); ?>, después de haber sido informado(a) de mi estado de salud bucal y de conocer las posibles consecuencias de mi tratamiento, autorizo al cirujano dentista para que lleve a cabo los tratamientos odontológicos, médicos y quirúrgicos que sean necesarios para resolver mis padecimientos odontólogicos. Así mismo doy fe en que he sido informado (a) de manera clara cada uno de los conceptos aquí expuestos.</p>
      <style>
          .firma {
     width: 300px;

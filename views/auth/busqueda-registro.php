@@ -321,8 +321,7 @@
             placeholder="Odontograma"
         />
     </div>
-
-    <img src="imagenes/<?php echo $resultado->imagen; ?>">
+    <img src=" ../imagenes/<?php echo $resultado->imagen;?>">
     <div class="campo w-100">
         <label>Anotaciones:</label>
 

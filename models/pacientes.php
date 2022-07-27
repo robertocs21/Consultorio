@@ -48,7 +48,7 @@ class Pacientes extends ActiveRecord{
     public $anotaciones;
 
     public function __construct($args = []){
-        $this->id = $args['id'] ?? null;
+         $this->id = $args['id'] ?? null;
         $this->nombre = $args['nombre'] ?? '';
         $this->apellido = $args['apellido'] ?? '';
         $this->edad = $args['edad'] ?? '';
@@ -56,17 +56,17 @@ class Pacientes extends ActiveRecord{
         $this->estado = $args['estado'] ?? '';
         $this->ocupacion = $args['ocupacion'] ?? '';
         $this->email = $args['email'] ?? '';
-        $this->diabetes = $args['diabetes'] ?? '0';
-        $this->cardio = $args['cardio'] ?? '0';
-        $this->cancer = $args['cancer'] ?? '0';
-        $this->epilepsia = $args['epilepsia'] ?? '0';
-        $this->hipertension = $args['hipertension'] ?? '0';
-        $this->asma = $args['asma'] ?? '0';
-        $this->convulsiones = $args['convulsiones'] ?? '0';
-        $this->vih = $args['vih'] ?? '0';
-        $this->bebe = $args['bebe'] ?? '0';
-        $this->fuma = $args['fuma'] ?? '0';
-        $this->embarazo = $args['embarazo'] ?? '0';
+        $this->diabetes = $args['diabetes'] ?? '';
+        $this->cardio = $args['cardio'] ?? '';
+        $this->cancer = $args['cancer'] ?? '';
+        $this->epilepsia = $args['epilepsia'] ?? '';
+        $this->hipertension = $args['hipertension'] ?? '';
+        $this->asma = $args['asma'] ?? '';
+        $this->convulsiones = $args['convulsiones'] ?? '';
+        $this->vih = $args['vih'] ?? '';
+        $this->bebe = $args['bebe'] ?? '';
+        $this->fuma = $args['fuma'] ?? '';
+        $this->embarazo = $args['embarazo'] ?? '';
         $this->diabetesf = $args['diabetesf'] ?? '';
         $this->cardiof = $args['cardiof'] ?? '';
         $this->cancerf = $args['cancerf'] ?? '';

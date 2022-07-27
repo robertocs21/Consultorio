@@ -151,17 +151,17 @@
     <ul>
     <label><b><font color="black">Paciente</b></label>
         <font color="black"><b>
-        <li for="diabetes" >Diabetes <input type="checkbox" name="diabetes" value="1" ></li>
-        <li for="cardio" >Problemas Cardiovasculares <input type="checkbox" name="cardio" value="1"></li>
-        <li for="cancer" >Cáncer <input type="checkbox" name="cancer" value="1"></li>
-        <li for="epilepsia" >Ataques de epilepsia <input type="checkbox" name="epilepsia" value="1"></li>
-        <li for="hipertension" >Hipertensión <input type="checkbox" name="hipertension" value="1"></li>
-        <li for="asma" >Asma <input type="checkbox" name="asma" value="1"></li>
-        <li for="convulsiones" >Convulsiones <input type="checkbox" name="convulsiones" value="1"></li>
-        <li for="vih" >VIH/SIDA <input type="checkbox" name="vih" value="1"></li>
-        <li for="bebe" >¿Usted bebe? <input type="checkbox" name="bebe" value="1"></li>
-        <li for="fuma" >¿Usted fuma? <input type="checkbox" name="fuma" value="1"></li>
-        <li for="embarazada" >En caso de ser mujer, ¿Está usted embarazada? <input type="checkbox" name="embarazada" value="1"></li>
+        <li for="diabetes" >Diabetes <input type="text" name="diabetes" placeholder="Diabetes" value="<?php echo s($paciente->diabetes)?>" ></li>
+        <li for="cardio" >Problemas Cardiovasculares <input type="text" name="cardio" placeholder="Cardio Vasculares" value="<?php echo s($paciente->cardio)?>"></li>
+        <li for="cancer" >Cáncer <input type="text" name="cancer" placeholder="Cáncer" value="<?php echo s($paciente->cancer)?>"></li>
+        <li for="epilepsia" >Ataques de epilepsia <input type="text" placeholder="Epilepsia" name="epilepsia" value="<?php echo s($paciente->epilepsia)?>"></li>
+        <li for="hipertension" >Hipertensión <input type="text" name="hipertension" placeholder="Hipertensión" value="<?php echo s($paciente->hipertension)?>"></li>
+        <li for="asma" >Asma <input type="text" name="asma" placeholder="Asma" value="<?php echo s($paciente->asma)?>"></li>
+        <li for="convulsiones" >Convulsiones <input type="text" name="convulsiones" placeholder="Convulsiones"value="<?php echo s($paciente->convulsiones)?>"></li>
+        <li for="vih" >VIH/SIDA <input type="text" name="vih" placeholder="VIH" value="<?php echo s($paciente->vih)?>"></li>
+        <li for="bebe" >¿Usted bebe? <input type="text" name="bebe" placeholder="Bebe" value="<?php echo s($paciente->bebe)?>"></li>
+        <li for="fuma" >¿Usted fuma? <input type="text" name="fuma" placeholder="Fuma" value="<?php echo s($paciente->fuma)?>"></li>
+        <li for="embarazada" >En caso de ser mujer, ¿Está usted embarazada? <input type="text" name="embarazada" placeholder="Embarazo"value="<?php echo s($paciente->embarazo)?>"></li>
         </b>   
         </font>
     </ul>

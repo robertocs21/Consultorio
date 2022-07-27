@@ -324,7 +324,7 @@
         <textarea id="anotaciones" name ="anotaciones"><?php echo s($paciente->anotaciones); ?></textarea>
         
      </div>
-     <p>Yo <?php echo ($paciente->nombre); ?> <?php echo s($paciente->apellido); ?>, después de haber sido informado(a) de mi estado de salud bucal y de conocer las posibles consecuencias de mi tratamiento, autorizo al cirujano dentista para que lleve a cabo los tratamientos odontológicos, médicos y quirúrgicos que sean necesarios para resolver mis padecimientos odontólogicos. Así mismo doy fe en que he sido informado (a) de manera clara cada uno de los conceptos aquí expuestos.</p>
+     <p align="justify">Yo <?php echo ($paciente->nombre); ?> <?php echo s($paciente->apellido); ?>, después de haber sido informado(a) de mi estado de salud bucal y de conocer las posibles consecuencias de mi tratamiento, autorizo al cirujano dentista para que lleve a cabo los tratamientos odontológicos, médicos y quirúrgicos que sean necesarios para resolver mis padecimientos odontólogicos. Así mismo doy fe en que he sido informado (a) de manera clara cada uno de los conceptos aquí expuestos.</p>
      <style>
          .firma {
     width: 300px;

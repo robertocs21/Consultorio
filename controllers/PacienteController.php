@@ -17,15 +17,6 @@ class PacienteController{
         
         if($_SERVER['REQUEST_METHOD'] === 'POST'){            
             $paciente->sincronizar($_POST);
-            $carpetaImagenes = '../views/auth/imagenes/';
-            $imagen = $_FILES['imagen'];
-            
-            if(!is_dir($carpetaImagenes)){
-                mkdir($carpetaImagenes);
-            }
-            $nombreImagen = md5(uniqid(rand(),true) ). ".jpg" ;
-            move_uploaded_file($imagen['tmp_name'],$carpetaImagenes . $nombreImagen);
-            $paciente->setImagen($nombreImagen);
             $alertas = $paciente->validarPaciente();
             if(empty($alertas)){
             $resultado = $paciente->guardar();
@@ -43,12 +34,7 @@ class PacienteController{
         $alertas = [];
         $resultado = $busqueda->find($id);
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $carpetaImagenes = '../views/auth/imagenes/';
-        $imagen = $_FILES['imagen'];
             $resultado->sincronizar($_POST);
-            $nombreImagen = md5(uniqid(rand(),true) ). ".jpg" ;
-            move_uploaded_file($imagen['tmp_name'],$carpetaImagenes . $nombreImagen);
-            $resultado->setImagen($nombreImagen);
             $resultado->guardar();
         }
         $router->render('auth/busqueda-registro',[

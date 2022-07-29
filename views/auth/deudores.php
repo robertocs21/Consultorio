@@ -53,3 +53,4 @@ input{
     </tbody>
 </table>
 <input type="submit" value="Actualizar" class="boton">
+<a href="/Inicio" ><b>Regresar</a>

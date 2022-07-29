@@ -59,6 +59,7 @@
 </style>
 
 <div class="contenedor">
+<br>
 <h1 class="nombre-pagina">Ficha del paciente</h1>
 <form class="formulario" method="POST" action="/crear-paciente" enctype="multipart/form-data">
 <?php 
@@ -309,15 +310,7 @@
             value="<?php echo s($paciente->visita); ?>"
         />
     </div>
-    <div class="campo">
-        <label for="imagen">Odontograma</label>
-        <input
-            type="file"
-            id="imagen"
-            name="imagen"
-            placeholder="Odontograma"
-        />
-    </div>
+    
     <div class="campo w-100">
         <label>Anotaciones:</label>
 
@@ -339,6 +332,8 @@
      <p></p>
 <label><b>Firma del paciente</b></label>
     <input type="submit" value="Registrar" class="boton">
+    <!--<input type="button" value="Imprimir" onclick="javascript:window.print()" />-->
+    <a href="/Inicio" class="boton"><b>Regresar</a>
 </div>
 </div>
 

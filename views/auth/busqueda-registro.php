@@ -312,16 +312,8 @@
             value="<?php echo s($resultado->visita); ?>"
         />
     </div>
-    <div class="campo">
-        <label for="imagen">Odontograma</label>
-        <input
-            type="file"
-            id="imagen"
-            name="imagen"
-            placeholder="Odontograma"
-        />
-    </div>
-    <img src=" ../imagenes/<?php echo $resultado->imagen;?>">
+    
+    
     <div class="campo w-100">
         <label>Anotaciones:</label>
 
@@ -343,6 +335,7 @@
      <p></p>
 <label><b>Firma del paciente</b></label>
     <input type="submit" value="Actualizar" class="boton">
+    <a href="/busqueda" class="boton">Buscar uno nuevo</a>
 </div>
 </div>
 

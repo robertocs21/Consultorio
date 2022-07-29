@@ -34,6 +34,7 @@
     </div>
     <div class="botones">
     <input type="submit" value="Buscar" class="boton" name="enviar" >
+    <a href="/Inicio"><b>Regresar</a>
 
 
 

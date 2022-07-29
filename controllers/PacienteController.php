@@ -65,6 +65,9 @@ class PacienteController{
             $alertas = $busqueda->validarBusqueda();
             if(empty($alertas)){
             header("Location: lista-busqueda?nombre=$busqueda->nombre");
+            if(!$busqueda->nombre){
+                header("Location: lista-busqueda?apellido=$busqueda->apellido");
+            }
             
             }
         }
@@ -77,7 +80,12 @@ class PacienteController{
     public static function lista(Router $router){
         $nombre = $_GET['nombre'];
         $busqueda = new Busqueda();
-        $resultado = $busqueda->buscar($nombre);
+        if(!$nombre){
+            $apellido = $_GET['apellido'];
+            $resultado = $busqueda->buscarap($apellido);
+        }else{
+            $resultado = $busqueda->buscar($nombre);
+        }
         
         $router->render('auth/lista-busqueda',[
             'resultado'=>$resultado

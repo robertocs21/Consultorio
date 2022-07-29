@@ -3,7 +3,7 @@
 .contenedor{
     background-color: #ccffff;
     border-radius: 10rem;
-    min-height: 245vh;
+    min-height: 435vh;
     padding: 0.5rem;
 }
 .contenedor-app{ 
@@ -333,7 +333,7 @@
 <label><b>Firma del paciente</b></label>
     <input type="submit" value="Registrar" class="boton">
     <!--<input type="button" value="Imprimir" onclick="javascript:window.print()" />-->
-    <a href="/Inicio" class="boton"><b>Regresar</a>
+    <a href="/Inicio"><b>Regresar</a>
 </div>
 </div>
 

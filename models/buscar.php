@@ -16,12 +16,7 @@ class Busqueda extends ActiveRecord{
 
 public function validarBusqueda(){
     if(!$this->id){
-        if(!$this->nombre){
-            self::$alertas['error'][]='El Nombre es obligatorio';
-        }  
-        if(!$this->apellido){
-            self::$alertas['error'][]='El Apellido es obligatorio'; 
-        }
+       
     }       
     return self::$alertas;
 }

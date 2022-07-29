@@ -335,7 +335,7 @@
      <p></p>
 <label><b>Firma del paciente</b></label>
     <input type="submit" value="Actualizar" class="boton">
-    <a href="/busqueda" class="boton">Buscar uno nuevo</a>
+    <a href="/busqueda"><b>Buscar uno nuevo</a>
 </div>
 </div>
 

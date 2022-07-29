@@ -134,6 +134,11 @@ class ActiveRecord {
         $resultado = self::consultarSQL($query);
         return  $resultado  ; 
     }
+    public static function buscarap($apellido) {
+        $query = " SELECT * FROM pacientes WHERE apellido LIKE '%".$apellido."%' ";
+        $resultado = self::consultarSQL($query);
+        return  $resultado  ; 
+    }
     public static function buscarid($id) {
         $query = " SELECT * FROM pacientes WHERE nombre LIKE '%".$id."%' ";
         $resultado = self::consultarSQL($query);

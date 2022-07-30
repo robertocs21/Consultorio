@@ -3,7 +3,7 @@
 .contenedor{
     background-color: #ccffff;
     border-radius: 10rem;
-    min-height: 435vh;
+    min-height: 235vh;
     padding: 0.5rem;
 }
 .contenedor-app{ 

@@ -28,15 +28,15 @@ input{
 ?>
 <h1 class="nombre-pagina">Lista de Adeudos</h1>
 
+<a href="/agregar" class="boton"><b>Agrega un adeudo</a>
 <table class="Lista">
     <thead>
         <tr>
             <th><font color=black>Folio</th>
             <th><font color=black>Nombre</th>
             <th><font color=black>Apellido</th>
-            <th><font color=black>Pago</th>
-            <th><font color=black>Cobro</th>
             <th><font color=black>Total</th>
+            <th><font color=black>Modificar Adeudo</th>
         </tr>
     </thead>
     <tbody>
@@ -45,9 +45,9 @@ input{
             <th><font color=black><?php echo $res->id?></th>
             <th><font color=black><?php echo $res->nombre?></th>
             <th><font color=black><?php echo $res->apellido?></th>
-            <th><font color=black><input type="num" id ="pago" name="pago"></th>
-            <th><font color=black><input type="num" id ="cobro" name="cobro"></th>
-            <th><font color=black></th>
+            <th><font color=black><?php echo $res->total; ?></th>
+            <th><font color=black><a href="/modificar?id=<?php echo $res->id?>" class="boton-verde">Modificar</a></th>
+
         </tr>
         <?php endforeach;  ?>
     </tbody>

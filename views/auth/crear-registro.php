@@ -310,7 +310,15 @@
             value="<?php echo s($paciente->visita); ?>"
         />
     </div>
-    
+    <div class="campo">
+        <label for="visita">Última visita</label>
+        <input
+            type="file"
+            id="visita"
+            name="visita"
+            value="<?php echo s($paciente->visita); ?>"
+        />
+    </div>
     <div class="campo w-100">
         <label>Anotaciones:</label>
 
@@ -334,6 +342,7 @@
     <input type="submit" value="Registrar" class="boton">
     <!--<input type="button" value="Imprimir" onclick="javascript:window.print()" />-->
     <a href="/Inicio"><b>Regresar</a>
+    <br>
 </div>
 </div>
 

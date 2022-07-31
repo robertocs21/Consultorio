@@ -3,6 +3,7 @@
 namespace Controllers;
 include '../models/buscar.php';
 include '../models/pacientes.php';
+include '../models/deudores.php';
 use Model\Pacientes;
 use Model\Busqueda;
 use Model\Deudores;

@@ -17,6 +17,7 @@ class PacienteController{
         
         if($_SERVER['REQUEST_METHOD'] === 'POST'){            
             $paciente->sincronizar($_POST);
+            
             $alertas = $paciente->validarPaciente();
             if(empty($alertas)){
             $resultado = $paciente->guardar();
@@ -66,6 +67,7 @@ class PacienteController{
     public static function lista(Router $router){
         $nombre = $_GET['nombre'];
         $busqueda = new Busqueda();
+
         if(!$nombre){
             $apellido = $_GET['apellido'];
             $resultado = $busqueda->buscarap($apellido);
@@ -77,12 +79,5 @@ class PacienteController{
             'resultado'=>$resultado
         ]);
     }
-    public static function deudores(Router $router){
-        $pacientes = new Pacientes();
-        $lista = $pacientes->all();
-        
-        $router->render('auth/deudores',[
-            'lista'=>$lista
-        ]);
-    }
+    
 }

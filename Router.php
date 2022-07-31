@@ -29,7 +29,6 @@ if ($method === 'GET') {
 } else {
   $fn = $this->postRoutes[$splitURL[0]] ?? null;
 }
-
        
 
         if ( $fn ) {

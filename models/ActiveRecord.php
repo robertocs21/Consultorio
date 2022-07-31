@@ -139,6 +139,11 @@ class ActiveRecord {
         $resultado = self::consultarSQL($query);
         return  $resultado  ; 
     }
+    public static function buscardoc($id) {
+        $query = " SELECT * FROM deuda WHERE doctor LIKE '%".$id."%' ";
+        $resultado = self::consultarSQL($query);
+        return  $resultado  ; 
+    }
     public static function buscarid($id) {
         $query = " SELECT * FROM pacientes WHERE nombre LIKE '%".$id."%' ";
         $resultado = self::consultarSQL($query);

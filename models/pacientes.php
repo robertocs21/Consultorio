@@ -7,7 +7,7 @@ class Pacientes extends ActiveRecord{
     protected static $columnasDB = ['id','nombre','apellido','edad','telefono','estado','ocupacion','email',
 'diabetes','cardio','cancer','epilepsia','hipertension','asma','convulsiones','vih','bebe','fuma','embarazo',
 'diabetesf','cardiof','cancerf','epilepsiaf','hipertensionf','asmaf','convulsionesf','vihf','accidente',
-'operacion','tratamiento','enfermedades','alergias','cepillado','radio','visita','imagen','anotaciones'];
+'operacion','tratamiento','enfermedades','alergias','cepillado','radio','visita','anotaciones'];
 
     public $id;
     public $nombre;
@@ -48,7 +48,7 @@ class Pacientes extends ActiveRecord{
     public $anotaciones;
 
     public function __construct($args = []){
-         $this->id = $args['id'] ?? null;
+        $this->id = $args['id'] ?? null;
         $this->nombre = $args['nombre'] ?? '';
         $this->apellido = $args['apellido'] ?? '';
         $this->edad = $args['edad'] ?? '';
@@ -83,7 +83,6 @@ class Pacientes extends ActiveRecord{
         $this->cepillado = $args['cepillado'] ?? '';
         $this->radio = $args['radio'] ?? '';
         $this->visita = $args['visita'] ?? '00/00/0000';
-        $this->imagen = $args['imagen'] ?? '';
         $this->anotaciones = $args['anotaciones'] ?? '';
     
         

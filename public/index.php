@@ -5,6 +5,7 @@ require_once __DIR__ . '/../includes/app.php';
 use Controllers\APIController;
 use Controllers\LoginController;
 use Controllers\PacienteController;
+use Controllers\DeudaController;
 use MVC\Router;
 
 $router = new Router();
@@ -40,8 +41,8 @@ $router->get('/busqueda',[PacienteController::class, 'busqueda']);
 $router->post('/busqueda',[PacienteController::class, 'busqueda']);
 
 //lista de deudores
-$router->get('/deudores',[PacienteController::class, 'deudores']);
-$router->post('/deudores',[PacienteController::class, 'deudores']);
+$router->get('/deudores',[DeudaController::class, 'deudores']);
+$router->post('/deudores',[DeudaController::class, 'deudores']);
 
 //lista de busqueda
 $router->get('/lista-busqueda',[PacienteController::class, 'lista']);
@@ -54,5 +55,10 @@ $router->get('/mensaje',[LoginController::class, 'mensaje']);
 //API de pacientes
 $router->get('/api/crear-paciente',[APIController::class, 'index']);
 
+$router->get('/agregar',[DeudaController::class, 'agregar']);
+$router->post('/agregar',[DeudaController::class, 'agregar']);
+
+$router->get('/modificar',[DeudaController::class, 'modificar']);
+$router->post('/modificar',[DeudaController::class, 'modificar']);
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

@@ -28,7 +28,6 @@ input{
 ?>
 <h1 class="nombre-pagina">Lista de Adeudos</h1>
 
-<a href="/agregar" class="boton"><b>Agrega un adeudo</a>
 <table class="Lista">
     <thead>
         <tr>
@@ -52,5 +51,5 @@ input{
         <?php endforeach;  ?>
     </tbody>
 </table>
-<input type="submit" value="Actualizar" class="boton">
+<a href="/agregar" class="boton"><b>Agrega un adeudo</a>
 <a href="/Inicio" ><b>Regresar</a>

@@ -57,7 +57,11 @@
     width: 20rem;
 }
 .folio{
-    margin-left:990px;
+    margin-left:950px;
+}
+.imprimir{
+    margin-left:800px;
+    margin-bottom: 100px;
 }
 </style>
 
@@ -336,6 +340,7 @@
 <label><b>Firma del paciente</b></label>
     <input type="submit" value="Actualizar" class="boton">
     <a href="/busqueda"><b>Buscar uno nuevo</a>
+    <a href="javascript:window.print()" name="imprimir" class="imprimir"> Imprimir</a>
 </div>
 </div>
 

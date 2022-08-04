@@ -160,7 +160,7 @@
         <li for="asma" >Asma <input type="text" name="asma" placeholder="Asma" value="<?php echo s($paciente->asma)?>"></li>
         <li for="convulsiones" >Convulsiones <input type="text" name="convulsiones" placeholder="Convulsiones"value="<?php echo s($paciente->convulsiones)?>"></li>
         <li for="vih" >VIH/SIDA <input type="text" name="vih" placeholder="VIH" value="<?php echo s($paciente->vih)?>"></li>
-        <li for="bebe" >¿Usted bebe? <input type="text" name="bebe" placeholder="Bebe" value="<?php echo s($paciente->bebe)?>"></li>
+        <li for="bebe" >¿Usted consume bebida alcoholicas? <input type="text" name="bebe" placeholder="Bebe" value="<?php echo s($paciente->bebe)?>"></li>
         <li for="fuma" >¿Usted fuma? <input type="text" name="fuma" placeholder="Fuma" value="<?php echo s($paciente->fuma)?>"></li>
         <li for="embarazada" >En caso de ser mujer, ¿Está usted embarazada? <input type="text" name="embarazada" placeholder="Embarazo"value="<?php echo s($paciente->embarazo)?>"></li>
         </b>   
@@ -242,12 +242,12 @@
         />
     </div>
     <div class="campo">
-    <label for="operacion">Operación</label>
+    <label for="operacion">Cirugía</label>
         <input
             type="text"
             id="operacion"
             name="operacion"
-            placeholder="¿Ha tenido alguna operación?"
+            placeholder="¿Ha tenido alguna Cirugía?"
             value="<?php echo s($paciente->operacion); ?>"
         />
     </div>
@@ -305,15 +305,6 @@
         <label for="visita">Última visita</label>
         <input
             type="date"
-            id="visita"
-            name="visita"
-            value="<?php echo s($paciente->visita); ?>"
-        />
-    </div>
-    <div class="campo">
-        <label for="visita">Última visita</label>
-        <input
-            type="file"
             id="visita"
             name="visita"
             value="<?php echo s($paciente->visita); ?>"

@@ -166,7 +166,7 @@
         <li for="asma" >Asma <input type="text" name="asma" value="<?php echo s($resultado->asma)?>"></li>
         <li for="convulsiones" >Convulsiones <input type="text" name="convulsiones" value="<?php echo s($resultado->convulsiones)?>"></li>
         <li for="vih" >VIH/SIDA <input type="text" name="vih" value="<?php echo s($resultado->vih)?>"></li>
-        <li for="bebe" >¿Usted bebe? <input type="text" name="bebe" value="<?php echo s($resultado->bebe)?>"></li>
+        <li for="bebe" >¿Usted consume bebidas alcoholicas? <input type="text" name="bebe" value="<?php echo s($resultado->bebe)?>"></li>
         <li for="fuma" >¿Usted fuma? <input type="text" name="fuma" value="<?php echo s($resultado->fuma)?>"></li>
         <li for="embarazada" >En caso de ser mujer, ¿Está usted embarazada? <input type="text" name="embarazada" value="<?php echo s($resultado->embarazo)?>"></li>
         </b>   
@@ -248,12 +248,12 @@
         />
     </div>
     <div class="campo">
-    <label for="operacion">Operación</label>
+    <label for="operacion">Cirugías</label>
         <input
             type="text"
             id="operacion"
             name="operacion"
-            placeholder="¿Ha tenido alguna operación?"
+            placeholder="¿Ha tenido alguna Cirugías?"
             value="<?php echo s($resultado->operacion); ?>"
         />
     </div>

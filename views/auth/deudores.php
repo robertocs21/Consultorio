@@ -28,6 +28,7 @@ input{
 ?>
 <h1 class="nombre-pagina">Lista de Adeudos</h1>
 
+
 <table class="Lista">
     <thead>
         <tr>
@@ -45,7 +46,13 @@ input{
             <th><font color=black><?php echo $res->nombre?></th>
             <th><font color=black><?php echo $res->apellido?></th>
             <th><font color=black><?php echo $res->total; ?></th>
-            <th><font color=black><a href="/modificar?id=<?php echo $res->id?>" class="boton-verde">Modificar</a></th>
+            <th><font color=black>
+            <a href="/modificar?id=<?php echo $res->id?>" class="boton-verde">Modificar</a>
+            <form method = "POST" >
+                <input type="hidden" name="id" value="<?php echo $res->id?>" >
+                <input type="submit" value="         Eliminar        " class="boton-rojo">
+            </form>
+            </th>
 
         </tr>
         <?php endforeach;  ?>

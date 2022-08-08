@@ -3,7 +3,6 @@
 namespace Controllers;
 include '../models/buscar.php';
 include '../models/pacientes.php';
-include '../models/deudores.php';
 use Model\Pacientes;
 use Model\Busqueda;
 use Model\Deudores;
@@ -12,9 +11,20 @@ use MVC\Router;
 class DeudaController{
     public static function deudores(Router $router){
         $pacientes = new Deudores();
-        $id = $_SESSION['id'];
-        $lista = $pacientes->buscardoc($id);
+        $idp = $_SESSION['id'];
+        $lista = $pacientes->buscardoc($idp);
         //debuguear($lista);
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $id=$_POST['id'];
+            $eliminar= new Deudores();
+            $resultado = $eliminar->find($id);
+            $resultado->eliminar();
+            //$eliminarid = (int)$resultado->id;
+            
+            
+            
+                header('location: /deudores');
+        }
         $router->render('auth/deudores',[
             'lista'=>$lista
         ]);

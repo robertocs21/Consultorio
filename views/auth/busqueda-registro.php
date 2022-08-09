@@ -166,9 +166,9 @@
         <li for="asma" >Asma <input type="text" name="asma" value="<?php echo s($resultado->asma)?>"></li>
         <li for="convulsiones" >Convulsiones <input type="text" name="convulsiones" value="<?php echo s($resultado->convulsiones)?>"></li>
         <li for="vih" >VIH/SIDA <input type="text" name="vih" value="<?php echo s($resultado->vih)?>"></li>
-        <li for="bebe" >¿Usted consume bebidas alcoholicas? <input type="text" name="bebe" value="<?php echo s($resultado->bebe)?>"></li>
-        <li for="fuma" >¿Usted fuma? <input type="text" name="fuma" value="<?php echo s($resultado->fuma)?>"></li>
-        <li for="embarazada" >En caso de ser mujer, ¿Está usted embarazada? <input type="text" name="embarazada" value="<?php echo s($resultado->embarazo)?>"></li>
+        <li for="sistema" >Sistema Nervioso <input type="text" name="sistema" placeholder="Sistema Nervioso" value="<?php echo s($resultado->sistema)?>"></li>
+        <li for="fiebre" >Fiebre Reumática <input type="text" name="fiebre" placeholder="Fiebre Reumática" value="<?php echo s($resultado->fiebre)?>"></li>
+        <li for="tuberculosis" >Tuberculosis <input type="text" name="tubercolosis" placeholder="Tubercolosis"value="<?php echo s($resultado->tubercolosis)?>"></li>
         </b>   
         </font>
     </ul>
@@ -233,6 +233,11 @@
             placeholder="¿Quién VIH/SIDA?"
             value="<?php echo s($resultado->vihf); ?>"
         /><label> Con Diabetes</label></li>
+        <b>
+        <li for="bebe" >¿Usted consume bebida alcoholicas? <input type="text" name="bebe" placeholder="Bebe" value="<?php echo s($resultado->bebe)?>"></li>
+        <li for="fuma" >¿Usted fuma? <input type="text" name="fuma" placeholder="Fuma" value="<?php echo s($resultado->fuma)?>"></li>
+        <li for="embarazada" >En caso de ser mujer, ¿Está usted embarazada? <input type="text" name="embarazada" placeholder="Embarazo"value="<?php echo s($resultado->embarazo)?>"></li>
+    </b>
         </font>
     </ul>
     </div>

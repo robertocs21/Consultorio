@@ -160,9 +160,9 @@
         <li for="asma" >Asma <input type="text" name="asma" placeholder="Asma" value="<?php echo s($paciente->asma)?>"></li>
         <li for="convulsiones" >Convulsiones <input type="text" name="convulsiones" placeholder="Convulsiones"value="<?php echo s($paciente->convulsiones)?>"></li>
         <li for="vih" >VIH/SIDA <input type="text" name="vih" placeholder="VIH" value="<?php echo s($paciente->vih)?>"></li>
-        <li for="bebe" >¿Usted consume bebida alcoholicas? <input type="text" name="bebe" placeholder="Bebe" value="<?php echo s($paciente->bebe)?>"></li>
-        <li for="fuma" >¿Usted fuma? <input type="text" name="fuma" placeholder="Fuma" value="<?php echo s($paciente->fuma)?>"></li>
-        <li for="embarazada" >En caso de ser mujer, ¿Está usted embarazada? <input type="text" name="embarazada" placeholder="Embarazo"value="<?php echo s($paciente->embarazo)?>"></li>
+        <li for="sistema" >Sistema Nervioso <input type="text" name="sistema" placeholder="Sistema Nervioso" value="<?php echo s($paciente->sistema)?>"></li>
+        <li for="fiebre" >Fiebre Reumática <input type="text" name="fiebre" placeholder="Fiebre Reumática" value="<?php echo s($paciente->fiebre)?>"></li>
+        <li for="tuberculosis" >Tuberculosis <input type="text" name="tubercolosis" placeholder="Tubercolosis"value="<?php echo s($paciente->tubercolosis)?>"></li>
         </b>   
         </font>
     </ul>
@@ -170,6 +170,7 @@
     <label><b><font color="black">Familiares</b></label>
         <font color="black">
         <li for="diabetesf" >
+        <label> Con Diabetes</label>
         <input
             type="text"
             id="diabetesf"
@@ -177,57 +178,69 @@
             placeholder="¿Quién con diabetes?"
             value="<?php echo s($paciente->diabetesf); ?>"
            
-        /><label> Con Diabetes</label></li>
-        <li for="cardiof" > <input
+        /></li>
+        <li for="cardiof" > 
+        <label> Con CVD</label>
+        <input
             type="text"
             id="cardiof"
             name="cardiof"
             placeholder="¿Quién con cardiovasculares?"
             value="<?php echo s($paciente->cardiof); ?>"
-        /><label> Con CVD</label></li>
-        <li for="cancerf" > <input
+        /></li>
+        <li for="cancerf" > 
+        <label> Con Cancer</label><input
             type="text"
             id="cancerf"
             name="cancerf"
             placeholder="¿Quién con cáncer?"
             value="<?php echo s($paciente->cancerf); ?>"
-        /><label> Con Cancer</label></li>
-        <li for="epilepsiaf" > <input
+        /></li>
+        <li for="epilepsiaf" > 
+        <label> Con Epilepsias</label><input
             type="text"
             id="epilepsiaf"
             name="epilepsiaf"
             placeholder="¿Quién con epilepsias?"
             value="<?php echo s($paciente->epilepsiaf); ?>"
-        /><label> Con Epilepsias</label></li>
-        <li for="hipertensionf" > <input
+        /></li>
+        <li for="hipertensionf" > 
+        <label> Con Hipertensión</label><input
             type="text"
             id="hipertensionf"
             name="hipertensionf"
             placeholder="¿Quién con hipertensión?"
             value="<?php echo s($paciente->hipertensionf); ?>"
-        /><label> Con Hipertensión</label></li>
-        <li for="asmaf" ><input
+        /></li>
+        <li for="asmaf" ><label> Con Asma</label>
+        <input
             type="text"
             id="asmaf"
             name="asmaf"
             placeholder="¿Quién con asma?"
             value="<?php echo s($paciente->asmaf); ?>"
-        /><label> Con Asma</label></li>
-        <li for="convulsionesf" ><input
+        /></li>
+        <li for="convulsionesf" ><label> Con Convulsiones</label><input
             type="text"
             id="convulcionesf"
             name="convulsionesf"
             placeholder="¿Quién con colvulsiones?"
             value="<?php echo s($paciente->convulsionesf); ?>"
-        /><label> Con Convulsiones</label></li>
-        <li for="vihf" ><input
+        /></li>
+        <li for="vihf" ><label> Con VIH</label>
+        <input
             type="text"
             id="vihf"
             name="vihf"
             placeholder="¿Quién VIH/SIDA?"
             value="<?php echo s($paciente->vihf); ?>"
-        /><label> Con Diabetes</label></li>
-        </font>
+        /></li>
+        <b>
+        <li for="bebe" >¿Usted consume bebida alcoholicas? <input type="text" name="bebe" placeholder="Bebe" value="<?php echo s($paciente->bebe)?>"></li>
+        <li for="fuma" >¿Usted fuma? <input type="text" name="fuma" placeholder="Fuma" value="<?php echo s($paciente->fuma)?>"></li>
+        <li for="embarazada" >En caso de ser mujer, ¿Está usted embarazada? <input type="text" name="embarazo" placeholder="Embarazo"value="<?php echo s($paciente->embarazo)?>"></li>
+    </b>
+    </font>
     </ul>
     </div>
    

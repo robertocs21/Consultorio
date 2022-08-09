@@ -7,7 +7,7 @@ class Pacientes extends ActiveRecord{
     protected static $columnasDB = ['id','nombre','apellido','edad','telefono','estado','ocupacion','email',
 'diabetes','cardio','cancer','epilepsia','hipertension','asma','convulsiones','vih','bebe','fuma','embarazo',
 'diabetesf','cardiof','cancerf','epilepsiaf','hipertensionf','asmaf','convulsionesf','vihf','accidente',
-'operacion','tratamiento','enfermedades','alergias','cepillado','radio','visita','anotaciones'];
+'operacion','tratamiento','enfermedades','alergias','cepillado','radio','visita','anotaciones','sistema','fiebre','tubercolosis'];
 
     public $id;
     public $nombre;
@@ -46,6 +46,9 @@ class Pacientes extends ActiveRecord{
     public $visita;
     public $imagen;
     public $anotaciones;
+    public $sistema;
+    public $fiebre;
+    public $tubercolosis;
 
     public function __construct($args = []){
         $this->id = $args['id'] ?? null;
@@ -84,6 +87,9 @@ class Pacientes extends ActiveRecord{
         $this->radio = $args['radio'] ?? '';
         $this->visita = $args['visita'] ?? '00/00/0000';
         $this->anotaciones = $args['anotaciones'] ?? '';
+        $this->sistema = $args['sistema'] ?? '';
+        $this->fiebre = $args['fiebre'] ?? '';
+        $this->tubercolosis = $args['tubercolosis'] ?? '';
     
         
 

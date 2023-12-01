@@ -22,8 +22,4 @@
         "intervention/image": "^2.7"
     }
 }
-{
-  "require": {
-    "php": "^8.0.0"
-  }
-}
+

@@ -41,7 +41,7 @@
 <form class="ficha" method="POST" action="<?php echo s($accion); ?>">
 
     <div class="membrete">
-        <img src="/build/img/logo-completo.png" alt="Martín Peraza · Servicios Dentales" width="180">
+        <img src="<?php echo recurso('/build/img/logo-completo.png'); ?>" alt="Martín Peraza · Servicios Dentales" width="180">
         <div>
             <strong>Ficha clínica</strong>
             <?php if (isset($paciente->id)): ?>
@@ -200,7 +200,7 @@
                 </div>
             </div>
             <div class="odontograma__lienzo">
-                <img src="/build/img/odontograma.webp" alt="Odontograma de dentición permanente, piezas 11 a 48" width="1024" height="787">
+                <img src="<?php echo recurso('/build/img/odontograma.webp'); ?>" alt="Odontograma de dentición permanente, piezas 11 a 48" width="1024" height="787">
                 <canvas width="2048" height="1574" aria-label="Área para marcar el odontograma"></canvas>
             </div>
             <ul class="odontograma__leyenda">

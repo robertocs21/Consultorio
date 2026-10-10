@@ -26,6 +26,14 @@ function dinero($cantidad) : string {
     return '$' . number_format((float) $cantidad, 2);
 }
 
+// URL de un archivo de public/ con una huella de su contenido (p. ej. /build/css/app.css?v=3f9a1c2b).
+// En DigitalOcean todos los archivos tienen fecha de 1980, así que los navegadores guardaban la versión
+// vieja por años; con la huella, la URL cambia en cuanto cambia el archivo
+function recurso(string $ruta) : string {
+    $archivo = __DIR__ . '/../public' . $ruta;
+    return is_file($archivo) ? $ruta . '?v=' . hash_file('crc32b', $archivo) : $ruta;
+}
+
 // Marca como activo el enlace de navegación de la página actual
 function claseActiva(string $ruta) : string {
     $actual = strtok($_SERVER['REQUEST_URI'] ?? '/', '?');

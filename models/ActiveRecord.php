@@ -60,20 +60,51 @@ class ActiveRecord {
     public static function consultarSQL($query, $params = []) {
         // Consultar la base de datos
         $stmt = self::ejecutar($query, $params);
-        $resultado = $stmt->get_result();
 
         // Iterar los resultados
         $array = [];
-        while($registro = $resultado->fetch_assoc()) {
+        foreach(self::filas($stmt) as $registro) {
             $array[] = static::crearObjeto($registro);
         }
 
         // liberar la memoria
-        $resultado->free();
         $stmt->close();
 
         // retornar los resultados
         return $array;
+    }
+
+    // Lee las filas de una consulta preparada. get_result() solo existe con el driver mysqlnd,
+    // y algunos hostings con PHP 8.1 o anterior usan el driver clásico de mysqli
+    protected static function filas($stmt) {
+        if(!method_exists($stmt, 'get_result')) {
+            return self::filasConBindResult($stmt);
+        }
+        $resultado = $stmt->get_result();
+        $filas = [];
+        while($registro = $resultado->fetch_assoc()) {
+            $filas[] = $registro;
+        }
+        $resultado->free();
+        return $filas;
+    }
+
+    protected static function filasConBindResult($stmt) {
+        $stmt->store_result();
+        $fila = [];
+        $referencias = [];
+        foreach($stmt->result_metadata()->fetch_fields() as $campo) {
+            $referencias[] = &$fila[$campo->name];
+        }
+        $stmt->bind_result(...$referencias);
+
+        $filas = [];
+        while($stmt->fetch()) {
+            // Copia los valores: bind_result reutiliza las mismas variables en cada vuelta
+            $filas[] = array_map(fn($valor) => $valor, $fila);
+        }
+        $stmt->free_result();
+        return $filas;
     }
 
     // Crea el objeto en memoria que es igual al de la BD

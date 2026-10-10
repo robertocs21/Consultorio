@@ -1,75 +1,89 @@
 <?php
 
 namespace Controllers;
-include '../models/buscar.php';
-include '../models/pacientes.php';
-include '../models/deudores.php';
+include_once __DIR__ . '/../models/buscar.php';
+include_once __DIR__ . '/../models/pacientes.php';
+include_once __DIR__ . '/../models/deudores.php';
 use Model\Pacientes;
 use Model\Busqueda;
 use Model\Deudores;
 use MVC\Router;
 
 class DeudaController{
-    public static function deudores(Router $router){
-        $pacientes = new Deudores();
-        $idp = $_SESSION['id'];
-        $lista = $pacientes->buscardoc($idp);
-        //debuguear($lista);
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $id=$_POST['id'];
-            $eliminar= new Deudores();
-            $resultado = $eliminar->find($id);
-            $resultado->eliminar();
-            //$eliminarid = (int)$resultado->id;
-            
-            
-            
-                header('location: /deudores');
+    // Busca el adeudo y verifica que sea del doctor con sesión; si no, regresa a la lista
+    private static function adeudoPropio($id){
+        $adeudo = Deudores::find($id);
+        if(!$adeudo || (string) $adeudo->doctor !== (string) $_SESSION['id']){
+            header('Location: /deudores');
+            exit;
         }
+        return $adeudo;
+    }
+
+    public static function deudores(Router $router){
+        isAuth();
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $resultado = self::adeudoPropio($_POST['id'] ?? 0);
+            $resultado->eliminar();
+            header('location: /deudores');
+            exit;
+        }
+        $lista = Deudores::buscardoc($_SESSION['id']);
         $router->render('auth/deudores',[
             'lista'=>$lista
         ]);
     }
     public static function agregar(Router $router){
+        isAuth();
         $paciente = new Deudores();
+        $alertas = [];
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $doctor = $_SESSION['id'];
-            $cobro = $_POST['cobro'];
-            $total = $cobro;
+            $cobro = (float) ($_POST['cobro'] ?? 0);
             $paciente->sincronizar($_POST);
-            $paciente->total=$total;
-            $paciente->doctor=$_SESSION['id'];
-            $paciente->guardar();
-            
-            
+            $alertas = $paciente->validarAdeudo();
+            if($cobro <= 0){
+                $alertas['error'][] = 'El monto del adeudo debe ser mayor a cero';
+            }
+            if(empty($alertas)){
+                $paciente->total=$cobro;
+                $paciente->doctor=$_SESSION['id'];
+                $paciente->guardar();
+                header('Location: /deudores');
+                exit;
+            }
         }
         $router->render('auth/agregar',[
-            'paciente'=>$paciente
+            'paciente'=>$paciente,
+            'alertas'=>$alertas
         ]);
     }
     public static function modificar(Router $router){
-        $id=$_GET['id'];
-        $modificar= new Deudores();
-        $resultado = $modificar->find($id);
+        isAuth();
+        $resultado = self::adeudoPropio($_GET['id'] ?? 0);
+        $alertas = [];
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $resultado->sincronizar($_POST);
-            $abono = $_POST['abono'];
-            $cobro = $_POST['cobro'];
-            $totalant = $resultado->total;
-            if(!$cobro){
-                $total = $totalant - $abono;
-                $resultado->total=$total;
-                $resultado->guardar();
-            }else{
-                $total = $totalant + $cobro;
-                $resultado->total=$total;
-                $resultado->guardar();
+            $abono = (float) ($_POST['abono'] ?? 0);
+            $cobro = (float) ($_POST['cobro'] ?? 0);
+            $alertas = $resultado->validarAdeudo();
+            if($cobro < 0 || $abono < 0){
+                $alertas['error'][] = 'Las cantidades no pueden ser negativas';
             }
-    
+            if(empty($alertas)){
+                $totalant = (float) $resultado->total;
+                // Antes, si se capturaban cargo y abono a la vez, el abono se ignoraba
+                $total = $totalant + $cobro - $abono;
+                $resultado->total=$total;
+                $resultado->guardar();
+                $alertas['exito'][] = ($cobro || $abono)
+                    ? 'Movimiento guardado. Nuevo saldo: ' . dinero($total)
+                    : 'Datos del paciente actualizados.';
+            }
         }
         $router->render('auth/modificar',[
-            'resultado'=>$resultado
+            'resultado'=>$resultado,
+            'alertas'=>$alertas
         ]);
     }
 }

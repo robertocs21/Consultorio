@@ -6,6 +6,7 @@ class Busqueda extends ActiveRecord{
     public $id;
     public $nombre;
     public $apellido;
+    public $telefono;
     
 
     public function __construct($args = []){

@@ -1,17 +1,23 @@
-<h1 class="nombre-pagina">Login</h1>
-<p class="descripcion-pagina">Inicia sesión con tu usuario</p>
+<?php
+    $titulo = 'Iniciar sesión';
+    $layout = 'auth';
+?>
+<h1 class="auth__titulo">Iniciar sesión</h1>
+<p class="auth__descripcion">Entra con tu correo y contraseña.</p>
 
 <?php include_once __DIR__ . '/../templates/alertas.php'; ?>
 
 <form class="formulario" method="POST" action="/">
     <div class="campo">
-        <label for="email">email</label>
+        <label for="email">Correo electrónico</label>
         <input
-            type="text"
+            type="email"
             id="email"
-            placeholder="Tu email"
+            placeholder="tu@correo.com"
             name="email"
+            autocomplete="email"
             value="<?php echo s($auth->email); ?>"
+            required
         />
     </div>
     <div class="campo">
@@ -19,13 +25,17 @@
         <input
             type="password"
             id="password"
-            placeholder="Tu Contraseña"
+            placeholder="Tu contraseña"
             name="password"
+            autocomplete="current-password"
+            required
         />
     </div>
-    <input type="submit" class="boton" value="Inicar Sesión">
+    <button type="submit" class="boton boton--bloque">Iniciar sesión</button>
 </form>
 
-<div class="acciones">
-    <a href="/crear-usuario">¿Aún no tienes un usuario? Crea Uno</a>
-</div>
+<?php if ($permitirRegistro): ?>
+    <div class="auth__enlaces">
+        <a href="/crear-usuario">¿Primera vez? <strong>Crea la cuenta principal</strong></a>
+    </div>
+<?php endif; ?>

@@ -6,6 +6,7 @@ class Doctores extends ActiveRecord{
     //Base de datos
     protected static $tabla = 'doctores';
     protected static $columnasDB = ['id','nombre','apellido','email','password'];
+    const LONGITUDES = ['nombre'=>60,'apellido'=>60,'email'=>30];
     public $id;
     public $nombre;
     public $apellido;
@@ -30,10 +31,15 @@ class Doctores extends ActiveRecord{
         }
         if(!$this->email){
             self::$alertas['error'][]='El email es obligatorio';
+        }elseif(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+            self::$alertas['error'][]='El email no es válido';
         }
         if(!$this->password){
-            self::$alertas['error'][]='La contraseña es obligatorio';
+            self::$alertas['error'][]='La contraseña es obligatoria';
+        }elseif(strlen($this->password) < 8){
+            self::$alertas['error'][]='La contraseña debe tener al menos 8 caracteres';
         }
+        $this->validarLongitudes();
         
         return self::$alertas;
     }
@@ -48,22 +54,22 @@ class Doctores extends ActiveRecord{
     }
 
     public function existeUsuario(){
-        $query = " SELECT * FROM " . self::$tabla . " WHERE email = '". $this->email . "' LIMIT 1";
-        
-        $resultado = self::$db->query($query);
+        $existe = self::where('email', $this->email);
 
-        if($resultado->num_rows){
+        if($existe){
             self::$alertas['error'][] = 'El usuario ya está registrado';
         }
-        return $resultado;
+        return $existe;
     }
     public function hashPassword(){
         $this-> password = password_hash($this-> password, PASSWORD_BCRYPT);
     }
     public function comprobarPasswordAndVerificado($password){
-        $resultado = password_verify($password, $this->password);
+        // trim(): el INSERT anterior guardaba el último valor (el hash) con un espacio al final
+        $resultado = password_verify($password, trim($this->password));
         if(!$resultado){
-            self::$alertas['error'][]='Contraseña incorrecta';
+            // Mismo mensaje que cuando el correo no existe, para no revelar qué cuentas hay
+            self::$alertas['error'][]='Correo o contraseña incorrectos';
         }else{
             return true;
         }

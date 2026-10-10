@@ -1,62 +1,72 @@
-<style>
-
-table.Lista{
-    font color:black;
-    background-color: #ccffff;
-    border-radius: 1rem;
-    margin-top: 4rem;
-    padding: 0.5rem;
-    width: 100%;
-    
-}
-thead{
-    background-color: #7AFF33;
-    padding: 2rem;
-    border-radius: 5rem;
-    }
-input{
-        flex: 1;
-        padding: 0.5rem;
-        border-radius: 1rem;
-        color:v.$negro;
-        width: 50%;
-    }
-</style>
-
-<?php 
-
+<?php
+    $titulo = 'Adeudos';
+    $porCobrar = array_sum(array_map(fn($deuda) => (float) $deuda->total, $lista));
 ?>
-<h1 class="nombre-pagina">Lista de Adeudos</h1>
+<div class="encabezado">
+    <div>
+        <h1>Adeudos</h1>
+        <p>Saldos pendientes de tus pacientes.</p>
+    </div>
+    <div class="encabezado__acciones">
+        <a href="/agregar" class="boton"><?php echo icono('agregar', 18); ?> Agregar adeudo</a>
+    </div>
+</div>
 
+<div class="estadisticas estadisticas--fila">
+    <div class="estadistica">
+        <span class="estadistica__etiqueta">Saldo total por cobrar</span>
+        <strong class="estadistica__valor"><?php echo dinero($porCobrar); ?></strong>
+    </div>
+    <div class="estadistica">
+        <span class="estadistica__etiqueta">Registros</span>
+        <strong class="estadistica__valor"><?php echo count($lista); ?></strong>
+    </div>
+</div>
 
-<table class="Lista">
-    <thead>
-        <tr>
-            <th><font color=black>Folio</th>
-            <th><font color=black>Nombre</th>
-            <th><font color=black>Apellido</th>
-            <th><font color=black>Total</th>
-            <th><font color=black>Modificar Adeudo</th>
-        </tr>
-    </thead>
-    <tbody>
-    <?php foreach($lista as $res):?>
-        <tr>
-            <th><font color=black><?php echo $res->id?></th>
-            <th><font color=black><?php echo $res->nombre?></th>
-            <th><font color=black><?php echo $res->apellido?></th>
-            <th><font color=black><?php echo $res->total; ?></th>
-            <th><font color=black>
-            <a href="/modificar?id=<?php echo $res->id?>" class="boton-verde">Modificar</a>
-            <form method = "POST" >
-                <input type="hidden" name="id" value="<?php echo $res->id?>" >
-                <input type="submit" value="         Eliminar        " class="boton-rojo">
-            </form>
-            </th>
-
-        </tr>
-        <?php endforeach;  ?>
-    </tbody>
-</table>
-<a href="/agregar" class="boton"><b>Agrega un adeudo</a>
-<a href="/Inicio" ><b>Regresar</a>
+<?php if (empty($lista)): ?>
+    <div class="tarjeta vacio">
+        <?php echo icono('adeudos', 40); ?>
+        <h2>No hay adeudos registrados</h2>
+        <p>Cuando un paciente quede a deber, regístralo aquí para darle seguimiento.</p>
+        <div class="vacio__acciones">
+            <a href="/agregar" class="boton"><?php echo icono('agregar', 18); ?> Agregar adeudo</a>
+        </div>
+    </div>
+<?php else: ?>
+    <div class="tarjeta tarjeta--tabla">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Folio</th>
+                    <th>Paciente</th>
+                    <th class="tabla__numero">Saldo</th>
+                    <th class="tabla__acciones"><span class="sr-only">Acciones</span></th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach($lista as $res): ?>
+                <tr>
+                    <td data-etiqueta="Folio"><span class="folio">#<?php echo s($res->id); ?></span></td>
+                    <td data-etiqueta="Paciente" class="tabla__principal"><?php echo s($res->nombre . ' ' . $res->apellido); ?></td>
+                    <td data-etiqueta="Saldo" class="tabla__numero">
+                        <span class="saldo <?php echo (float) $res->total > 0 ? 'saldo--pendiente' : 'saldo--pagado'; ?>">
+                            <?php echo dinero($res->total); ?>
+                        </span>
+                    </td>
+                    <td class="tabla__acciones">
+                        <a href="/modificar?id=<?php echo s($res->id); ?>" class="boton boton--secundario boton--chico">
+                            <?php echo icono('editar', 18); ?> Cargo / abono
+                        </a>
+                        <form method="POST" action="/deudores" data-confirmar="¿Eliminar el adeudo de <?php echo s($res->nombre . ' ' . $res->apellido); ?>? Esta acción no se puede deshacer.">
+                            <input type="hidden" name="id" value="<?php echo s($res->id); ?>">
+                            <button type="submit" class="boton boton--peligro boton--chico boton--icono" title="Eliminar adeudo" aria-label="Eliminar adeudo de <?php echo s($res->nombre . ' ' . $res->apellido); ?>">
+                                <?php echo icono('eliminar', 18); ?>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php endif; ?>

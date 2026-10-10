@@ -6,3 +6,4 @@ package.json
 package-lock.json
 .env
 a
+.DS_Store

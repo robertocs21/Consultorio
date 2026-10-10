@@ -16,6 +16,14 @@ class Router
     }
 
     public function comprobarRutas() {
+        // Cookie de sesión inaccesible desde JavaScript y que no viaja en peticiones de otros sitios.
+        // En Heroku el HTTPS termina antes de PHP, por eso también se revisa X-Forwarded-Proto
+        $https = !empty($_SERVER['HTTPS']) || ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https';
+        session_set_cookie_params([
+            'httponly' => true,
+            'samesite' => 'Lax',
+            'secure' => $https
+        ]);
         session_start();
         $currentUrl = ($_SERVER['REQUEST_URI'] === '') ? '/' :  $_SERVER['REQUEST_URI'] ;
 $method = $_SERVER['REQUEST_METHOD'];
@@ -35,7 +43,8 @@ if ($method === 'GET') {
             // Call user fn va a llamar una función cuando no sabemos cual sera
             call_user_func($fn, $this); // This es para pasar argumentos
         } else {
-            echo "Página No Encontrada o Ruta no válida";
+            http_response_code(404);
+            $this->render('404');
         }
     }
 

@@ -2,7 +2,6 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
-use Controllers\APIController;
 use Controllers\LoginController;
 use Controllers\PacienteController;
 use Controllers\DeudaController;
@@ -14,12 +13,6 @@ $router = new Router();
 $router->get('/',[LoginController::class, 'login']);
 $router->post('/',[LoginController::class, 'login']);
 $router->get('/logout',[LoginController::class, 'logout']);
-
-//Recuperar contraseña
-$router->get('/olvide',[LoginController::class, 'olvide']);
-$router->post('/olvide',[LoginController::class, 'olvide']); 
-$router->get('/recuperar',[LoginController::class, 'recuperar']);
-$router->post('/recuperar',[LoginController::class, 'recuperar']);
 
 //Crear cuenta
 $router->get('/crear-usuario',[LoginController::class, 'crear']);
@@ -48,13 +41,7 @@ $router->post('/deudores',[DeudaController::class, 'deudores']);
 $router->get('/lista-busqueda',[PacienteController::class, 'lista']);
 $router->post('/lista-busqueda',[PacienteController::class, 'lista']);
 
-//Confirmar cuenta
-$router->get('/confirmar-cuenta',[LoginController::class, 'confirmar']);
-$router->get('/mensaje',[LoginController::class, 'mensaje']);
-
-//API de pacientes
-$router->get('/api/crear-paciente',[APIController::class, 'index']);
-
+//Adeudos
 $router->get('/agregar',[DeudaController::class, 'agregar']);
 $router->post('/agregar',[DeudaController::class, 'agregar']);
 

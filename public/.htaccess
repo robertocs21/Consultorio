@@ -1,4 +1,15 @@
 Options -MultiViews
 RewriteEngine On
+
+# La app no usa formularios multipart (subida de archivos), así que se rechazan antes de llegar a PHP:
+# es la vía de ataque de php2shell (CVE-2026-109618 y CVE-2026-109619)
+RewriteCond %{HTTP:Content-Type} multipart/ [NC]
+RewriteRule ^ - [F]
+
+# La configuración de PHP de esta carpeta no se sirve como archivo
+<Files ".user.ini">
+    Require all denied
+</Files>
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [QSA,L]

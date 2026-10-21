@@ -1,0 +1,12 @@
+# Lo que no debe entrar a la imagen
+.git
+.DS_Store
+**/.DS_Store
+includes/.env
+vendor
+node_modules
+database
+Dockerfile
+.dockerignore
+README.md
+Procfile
